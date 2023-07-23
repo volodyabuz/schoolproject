@@ -9,12 +9,14 @@ class ProgramEdu(models.Model):
 
     name = models.CharField(
         max_length=40,
+        db_index=True,
         unique=True,
         verbose_name='Название'
         )
     slug = models.SlugField(
         max_length=40,
         db_index=True,
+        unique=True,
         verbose_name='URL'
         )
     min_age = models.PositiveIntegerField(
@@ -87,6 +89,9 @@ class ScheduleEdu(models.Model):
         auto_now=False,
         verbose_name='Конец урока'
         )
+
+    def __str__(self):
+        return self.week_day
 
     class Meta:
         verbose_name = 'Расписание занятий'
