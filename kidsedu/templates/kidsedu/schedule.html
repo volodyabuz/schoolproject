@@ -1,0 +1,47 @@
+<!-- SCHEDULE -->
+<section class="schedule section" id="schedule">
+    <div class="container">
+         <div class="row">
+
+                 <div class="col-lg-12 col-12 text-center">
+                     <h6 data-aos="fade-up">еженедельное расписание в нашей школе</h6>
+
+                     <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">Расписание занятий</h2>
+                  </div>
+
+                  <div class="col-lg-12 py-5 col-md-12 col-12">
+                      <table class="table table-bordered table-responsive schedule-table" data-aos="fade-up" data-aos-delay="300">
+
+                          <thead class="thead-light">
+                              <th><i class="fa fa-calendar"></i></th>
+                              <th>Понедельник</th>
+                              <th>Вторник</th>
+                              <th>Среда</th>
+                              <th>Четверг</th>
+                              <th>Пятница</th>
+                              <th>Суббота</th>
+                          </thead>
+
+                          <tbody>
+                            {% for time_item in table_times %}
+                              <tr>
+                                 <td><small>{{time_item}}</small></td>
+                                    {% for number_day in week_lst %}
+                                        <td>
+                                            {% for item in qset %}
+                                                {% if item.start_edu|time:"H:i" == time_item and item.week_day == number_day %}
+                                                    <strong>{{item.name_id}}</strong>
+                                                    <span>{{item.start_edu|time:"H:i"}} - {{item.finish_edu|time:"H:i"}}</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                    {% endfor %}
+                            {% endfor %}
+                          </tbody>
+
+                      </table>
+                  </div>
+
+         </div>
+    </div>
+</section>

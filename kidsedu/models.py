@@ -61,13 +61,13 @@ class ScheduleEdu(models.Model):
     class WeekDay(models.TextChoices):
         """Дни недели."""
 
-        MONDAY = "MON", _("Понедельник")
-        TUESDAY = "TUE", _("Вторник")
-        WEDNESDAY = "WED", _("Среда")
-        THURSDAY = "THU", _("Четверг")
-        FRIDAY = "FRI", _("Пятница")
-        SATURDAY = "SAT", _("Суббота")
-        SUNDAY = "SUN", _("Воскресенье")
+        MONDAY = "1", _("Понедельник")
+        TUESDAY = "2", _("Вторник")
+        WEDNESDAY = "3", _("Среда")
+        THURSDAY = "4", _("Четверг")
+        FRIDAY = "5", _("Пятница")
+        SATURDAY = "6", _("Суббота")
+        SUNDAY = "7", _("Воскресенье")
 
     name_id = models.ForeignKey(
         'ProgramEdu',

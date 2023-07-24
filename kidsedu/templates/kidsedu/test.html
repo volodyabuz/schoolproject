@@ -1,0 +1,26 @@
+<table class="table table-bordered table-responsive schedule-table" data-aos="fade-up" data-aos-delay="300">
+
+    <thead class="thead-light">
+        <th><i class="fa fa-calendar"></i></th>
+        <th>Понедельник</th>
+        <th>Вторник</th>
+        <th>Среда</th>
+        <th>Четверг</th>
+        <th>Пятница</th>
+        <th>Суббота</th>
+    </thead>
+
+    <tbody>
+        <tr>
+           <td><small>8:00</small></td>
+           {% for item in edu_list %}
+           {% if item.start_edu|time:"H:i" == "08:00" %}
+           <td>
+               <strong>{{item.name_id}}</strong>
+               <span>{{item.start_edu|time:"H:i"}} - {{item.finish_edu|time:"H:i"}}</span>
+           </td>
+           {% endif %}
+           {% endfor %}
+
+    </tbody>
+</table>
