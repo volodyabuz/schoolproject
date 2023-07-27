@@ -1,0 +1,40 @@
+ <!-- CLASS -->
+ <section class="class section" id="class">
+    <div class="container">
+         <div class="row">
+
+                 <div class="col-lg-12 col-12 text-center mb-5">
+                     <h6 data-aos="fade-up">Стань сильнее</h6>
+
+                     <h2 data-aos="fade-up" data-aos-delay="200">Наши программы обучения</h2>
+                  </div>
+
+                
+                {% for item in qset %}
+                 <div class="{{classes}}" data-aos="{{data_aos}}" data-aos-delay="{{data_aos_delay}}">
+                     <div class="class-thumb">
+
+                         <img src="{{ item.photo.url|default_if_none:'#' }}" class="img-fluid" alt="{{item.name}}">
+
+                         <div class="class-info">
+                             <h3 class="mb-1">{{item.name}}</h3>
+
+                             <span>От {{item.min_age}} до {{item.max_age}} лет</span>
+
+                             <span class="class-price">{{item.price}}Р</span>
+
+                             <p class="mt-3">{{item.about|truncatewords:12}}</p>
+                         </div>
+                     </div>
+                 </div>
+                {% endfor %}
+         </div>
+    </div>
+    <div style="margin-bottom: 40px;"></div>
+    <a href="{% url 'all' %}" class="btn custom-btn bg-color mt-3" data-aos="fade-up" style="
+    margin: 0 auto;
+    display: block;
+    width: 350px;">
+        Все программы
+    </a>
+</section>
