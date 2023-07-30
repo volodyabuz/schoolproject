@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 
-     <title>Главная страница</title>
+     <title>{{title}}</title>
 
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -36,31 +36,17 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-lg-auto">
+                    {% for link, name in nav_item.items %}
                     <li class="nav-item">
-                        <a href="#home" class="nav-link smoothScroll">Главная</a>
+                        <a href="{{link}}" class="nav-link smoothScroll">{{name}}</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link smoothScroll">О нас</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#class" class="nav-link smoothScroll">Занятия</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#schedule" class="nav-link smoothScroll">Расписание</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link smoothScroll">Контакты</a>
-                    </li>
+                    {% endfor %}
                 </ul>
 
                 <ul class="social-icon ml-lg-3">
-                    <li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    {% for fa, href in social.items %}
+                    <li><a href="{{href}}" target="_blank" class="fa fa-{{fa}}"></a></li>
+                    {% endfor %}
                 </ul>
             </div>
 
