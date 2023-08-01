@@ -114,7 +114,7 @@ class PersonForm(models.Model):
         )
     phone_number = models.CharField(
         max_length=16,
-        default='+1-234-567-89-01',
+        unique=True,
         verbose_name='Телефон'
         )
     add_text = models.TextField(

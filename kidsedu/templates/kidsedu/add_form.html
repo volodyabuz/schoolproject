@@ -1,0 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h2 class="modal-title" id="membershipFormLabel">{{head_form_name}}</h2>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <form action="{% url 'home' %}" class="membership-form webform" role="form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-error">{{form.non_field_errors}}</div>
+              {% for f in form %}
+              <p>{{ f }}</p>
+              <div class="form-error">{{ f.errors }}</div>
+              {% endfor %}
+              <button type="submit" class="form-control" id="submit-button" name="submit">Подтвердить</button>
+
+              <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="signup-agree">
+                  <label class="custom-control-label text-small text-muted" for="signup-agree">Я согласен с <a href="#">Правилами и Условиями</a>
+                  </label>
+              </div>
+          </form>
+        </div>
+
+        <div class="modal-footer"></div>
+
+      </div>
+    </div>
+  </div>

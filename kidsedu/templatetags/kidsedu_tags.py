@@ -34,3 +34,9 @@ def classes_progs():
         'data_aos': data_aos,
         'data_aos_delay': data_aos_delay,
     }
+
+
+@register.inclusion_tag('kidsedu/add_form.html')
+def add_person_form(form):
+    """Отображает форму обратной связи."""
+    return {'head_form_name': 'Форма заявки', 'form': form}

@@ -165,43 +165,7 @@
           </div>
      </section>
 
-    <!-- Modal -->
-    <div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-
-        <div class="modal-content">
-          <div class="modal-header">
-
-            <h2 class="modal-title" id="membershipFormLabel">Форма заявки</h2>
-
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <div class="modal-body">
-            <form class="membership-form webform" role="form">
-                <input type="text" class="form-control" name="cf-name" placeholder="Иван Иванов">
-
-                <input type="email" class="form-control" name="cf-email" placeholder="Ivanivanov@gmail.com">
-
-                <input type="tel" class="form-control" name="cf-phone" placeholder="+1-234-567-89-01" pattern="+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required>
-
-                <textarea class="form-control" rows="3" name="cf-message" placeholder="Дополнительное сообщение"></textarea>
-
-                <button type="submit" class="form-control" id="submit-button" name="submit">Подтвердить</button>
-
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="signup-agree">
-                    <label class="custom-control-label text-small text-muted" for="signup-agree">Я согласен с <a href="#">Правилами и Условиями</a>
-                    </label>
-                </div>
-            </form>
-          </div>
-
-          <div class="modal-footer"></div>
-
-        </div>
-      </div>
-    </div>
+     <!-- Modal -->
+     {% add_person_form form %}
+    
 {% endblock content %}
