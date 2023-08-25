@@ -3,6 +3,7 @@ from .models import *
 import re
 from django.core.exceptions import ValidationError
 
+
 class AddPersonForm(forms.ModelForm):
     """Форма добавления пользователя."""
 
@@ -20,15 +21,15 @@ class AddPersonForm(forms.ModelForm):
                 'type': "email",
                 'class': "form-control",
                 'name': "cf-email",
-                'placeholder': "Ivanivanov@gmail.com"
+                'placeholder': "Ivanivanov@gmail.com",
+                'required pattern': "[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
             }),
             'phone_number': forms.TextInput(attrs={
                 "type": "tel",
                 'class': "form-control",
                 'name': "cf-phone",
                 'placeholder': "+1-234-567-89-01",
-                'pattern': "+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}",
-                'required': None,
+                'required pattern': "\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}",
             }),
             'add_text': forms.Textarea(attrs={
                 'class': "form-control",
@@ -38,11 +39,11 @@ class AddPersonForm(forms.ModelForm):
             }),
         }
 
-    def clean_phone_number(self):
-        """Проверяет корректность формата номера телефона."""
-        phone_number = self.cleaned_data['phone_number']
-        match = re.findall(r'\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}', phone_number)
-        if phone_number != ''.join(match):
-            raise ValidationError('Введенный номер не соответствует формату')
+    # def clean_phone_number(self):
+    #     """Проверяет корректность формата номера телефона."""
+    #     phone_number = self.cleaned_data['phone_number']
+    #     match = re.findall(r'\+7-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}', phone_number)
+    #     if phone_number != ''.join(match):
+    #         raise ValidationError('Введенный номер не соответствует формату', code='invalid')
 
-        return phone_number
+    #     return phone_number

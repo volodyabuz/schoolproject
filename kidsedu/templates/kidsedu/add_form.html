@@ -1,3 +1,6 @@
+{% load kidsedu_tags %}
+{% load static %}
+
 <!-- Modal -->
 <div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -13,7 +16,7 @@
         </div>
 
         <div class="modal-body">
-          <form action="{% url 'home' %}" class="membership-form webform" role="form" method="post" enctype="multipart/form-data">
+          <form action="." class="membership-form webform" role="form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-error">{{form.non_field_errors}}</div>
               {% for f in form %}
@@ -23,8 +26,8 @@
               <button type="submit" class="form-control" id="submit-button" name="submit">Подтвердить</button>
 
               <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="signup-agree">
-                  <label class="custom-control-label text-small text-muted" for="signup-agree">Я согласен с <a href="#">Правилами и Условиями</a>
+                  <input type="checkbox" class="custom-control-input" id="signup-agree" required>
+                  <label class="custom-control-label text-small text-muted" for="signup-agree">Я согласен с <a href="#" data-toggle="modal" data-target="#rules">Правилами и Условиями</a>
                   </label>
               </div>
           </form>
@@ -35,3 +38,28 @@
       </div>
     </div>
   </div>
+
+
+<!-- Modal Rules-->
+<div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="rulesLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h2 class="modal-title" id="rulesLabel" style="font-size: 30px">Правила и условия</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <iframe src="{% static 'kidsedu/doc/agree.html' %}" width=410 height=400 frameborder="0" style="border:0;"></iframe>
+      </div>
+
+      <div class="modal-footer"></div>
+
+    </div>
+  </div>
+</div>

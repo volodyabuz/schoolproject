@@ -109,12 +109,10 @@ class PersonForm(models.Model):
         )
     email = models.EmailField(
         max_length=254,
-        unique=True,
         verbose_name='Почта'
         )
     phone_number = models.CharField(
         max_length=16,
-        unique=True,
         verbose_name='Телефон'
         )
     add_text = models.TextField(
@@ -126,6 +124,6 @@ class PersonForm(models.Model):
         return self.person
 
     class Meta:
-        verbose_name = 'Форму обратной связи'
+        verbose_name = 'Форма обратной связи'
         verbose_name_plural = 'Форма обратной связи'
         ordering = ['id']

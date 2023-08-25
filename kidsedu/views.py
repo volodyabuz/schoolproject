@@ -29,8 +29,8 @@ def index(request):
     if request.method == 'POST':
         form = AddPersonForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
             form.save()
+            form = AddPersonForm()
     else:
         form = AddPersonForm()
     context['title'] = 'Главная страница'

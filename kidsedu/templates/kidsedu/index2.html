@@ -167,5 +167,8 @@
 
      <!-- Modal -->
      {% add_person_form form %}
+     {% if form_error %}
+        $(#membershipForm).modal("show");
+     {% endif %}
     
 {% endblock content %}
