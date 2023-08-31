@@ -135,19 +135,7 @@
           <div class="container">
                <div class="row">
 
-                    <div class="ml-auto col-lg-5 col-md-6 col-12">
-                        <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Не стестяйтесь спрашивать что угодно</h2>
-
-                        <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
-                            <input type="text" class="form-control" name="cf-name" placeholder="Имя">
-
-                            <input type="email" class="form-control" name="cf-email" placeholder="Email">
-
-                            <textarea class="form-control" rows="7" name="cf-message" placeholder="Сообщение"></textarea>
-
-                            <button type="submit" class="form-control" id="submit-button" name="submit">Отправить</button>
-                        </form>
-                    </div>
+                    {% feedback_form form_fb %}
 
                     <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
                         <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Телефон для связи</h2>

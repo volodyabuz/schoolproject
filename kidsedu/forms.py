@@ -47,3 +47,32 @@ class AddPersonForm(forms.ModelForm):
     #         raise ValidationError('Введенный номер не соответствует формату', code='invalid')
 
     #     return phone_number
+
+
+class FeedBackForm(forms.Form):
+    """Форма обратной связи."""
+
+    name = forms.CharField(max_length=40, widget=forms.TextInput(attrs={
+        'type': "text",
+        'class': "form-control",
+        'name': "cf-name",
+        'placeholder': "Имя",
+        'required': "required"
+    })
+    )
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'type': "email",
+        'class': "form-control",
+        'name': "cf-email",
+        'placeholder': "Email",
+        'required pattern': "[a-z0-9]+@[a-z]+\.[a-z]{2,3}",
+        'required': "required"
+        })
+    )
+    message = forms.CharField(widget=forms.Textarea(attrs={
+        'class': "form-control",
+        'rows': "7",
+        'name': "cf-message",
+        'placeholder': "Сообщение",
+    })
+    )

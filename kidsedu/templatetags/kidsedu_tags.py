@@ -38,5 +38,14 @@ def classes_progs():
 
 @register.inclusion_tag('kidsedu/add_form.html')
 def add_person_form(form):
-    """Отображает форму обратной связи."""
+    """Отображает форму заявки."""
     return {'head_form_name': 'Форма заявки', 'form': form}
+
+
+@register.inclusion_tag('kidsedu/feedback_form.html')
+def feedback_form(form_fb):
+    """Отображает форма обратной связи."""
+    return {
+        'head_form_name': 'Не стесняйтесь спрашивать что угодно',
+        'form_fb': form_fb
+        }
