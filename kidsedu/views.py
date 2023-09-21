@@ -31,7 +31,7 @@ context = {
 
 
 def index(request):
-    # Форма заявки
+    # Формы
     if request.method == 'POST':
 
         form = AddPersonForm(request.POST)
@@ -61,6 +61,7 @@ def index(request):
 
 
 class AllPosts(ListView):
+    paginate_by = 3
     model = ProgramEdu
     context_object_name = 'progs'
     template_name = 'kidsedu/all_classes.html'
