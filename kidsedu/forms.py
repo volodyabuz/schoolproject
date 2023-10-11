@@ -2,6 +2,8 @@ from django import forms
 from .models import *
 import re
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class AddPersonForm(forms.ModelForm):
@@ -76,3 +78,34 @@ class FeedBackForm(forms.Form):
         'placeholder': "Сообщение",
     })
     )
+
+
+class RegisterForm(UserCreationForm):
+    """Форма регистрации пользователей."""
+
+    username = forms.CharField(max_length=40, widget=forms.TextInput(attrs={
+        'type': "text",
+        'class': "form-control",
+        'name': "cf-name",
+        'placeholder': "Имя пользователя",
+        'required': "required"
+    })
+    )
+    password1 = forms.CharField(max_length=40, widget=forms.PasswordInput(attrs={
+        'class': "form-control",
+        'name': "cf-password",
+        'placeholder': "Пароль",
+        'required': "required"
+    })
+    )
+    password2 = forms.CharField(max_length=40, widget=forms.PasswordInput(attrs={
+        'class': "form-control",
+        'name': "cf-password",
+        'placeholder': "Подтверждение пароля",
+        'required': "required"
+    })
+    )
+
+    class Meta:
+        model = User
+        fields = ('username', 'password1', 'password2')

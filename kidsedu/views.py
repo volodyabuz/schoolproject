@@ -1,9 +1,10 @@
 from typing import Any, Dict
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 
 from .models import *
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from .forms import *
 from django.core.mail import send_mail, BadHeaderError
 from django.core.mail import EmailMultiAlternatives
@@ -21,6 +22,7 @@ nav_item = {
     '#class': 'Занятия',
     '#schedule': 'Расписание',
     '#contact': 'Контакты',
+    # '/register': 'Регистрация'
 }
 
 context = {
@@ -75,6 +77,17 @@ class AllPosts(ListView):
         context['form'] = AllPosts.form
         return context
 
+# class Register(CreateView):
+#     form_class = RegisterForm
+#     template_name = 'kidsedu/register.html'
+#     success_url = reverse_lazy('home')
+
+#     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Регистрация пользователя'
+#         context['social'] = social
+#         context['form'] = Register.form_class
+#         return context
 
 def send_email_func(used_form, subject_mail):
     # Получаем данные полей формы для отправки
