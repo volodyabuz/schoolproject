@@ -22,6 +22,7 @@ from .settings import MEDIA_URL, MEDIA_ROOT, DEBUG
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('kidsedu.urls')),
+    path('captcha/', include('captcha.urls')),
 ]
 
 if DEBUG:

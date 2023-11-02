@@ -4,6 +4,7 @@ import re
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from captcha.fields import CaptchaField
 
 
 class AddPersonForm(forms.ModelForm):
@@ -78,6 +79,7 @@ class FeedBackForm(forms.Form):
         'placeholder': "Сообщение",
     })
     )
+    captcha = CaptchaField()
 
 
 class RegisterForm(UserCreationForm):

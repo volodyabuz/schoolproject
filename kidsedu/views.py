@@ -77,17 +77,17 @@ class AllPosts(ListView):
         context['form'] = AllPosts.form
         return context
 
-# class Register(CreateView):
-#     form_class = RegisterForm
-#     template_name = 'kidsedu/register.html'
-#     success_url = reverse_lazy('home')
+class Register(CreateView):
+    form_class = RegisterForm
+    template_name = 'kidsedu/register.html'
+    success_url = reverse_lazy('home')
 
-#     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = 'Регистрация пользователя'
-#         context['social'] = social
-#         context['form'] = Register.form_class
-#         return context
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Регистрация пользователя'
+        context['social'] = social
+        context['form'] = Register.form_class
+        return context
 
 def send_email_func(used_form, subject_mail):
     # Получаем данные полей формы для отправки
