@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'captcha',
+    "debug_toolbar",
     'kidsedu.apps.KidseduConfig',
 ]
 
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'schooledu.urls'
@@ -144,3 +146,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 CAPTCHA_FONT_SIZE = 40
 CAPTCHA_LENGTH = 6
 CAPTCHA_IMAGE_SIZE = (231,57)
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]

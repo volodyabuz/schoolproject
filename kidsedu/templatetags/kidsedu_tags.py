@@ -8,7 +8,7 @@ register = template.Library()
 def schedule_table():
     """Для таблицы расписания занятий."""
     table_times = ['08:00', '10:00', '12:00', '14:00', '16:00']
-    qset = ScheduleEdu.objects.all().order_by('week_day')
+    qset = ScheduleEdu.objects.all().order_by('week_day').select_related('name_id')
     week_lst = [str(i) for i in range(1, 7)]
     return {
         'qset': qset,
