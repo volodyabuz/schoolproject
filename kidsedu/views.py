@@ -9,6 +9,7 @@ from .forms import *
 from django.core.mail import send_mail, BadHeaderError
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django.views.decorators.cache import cache_page
 
 social = {
     'vk': 'https://vk.com/id462686534',
@@ -31,7 +32,7 @@ context = {
     'nav_item': nav_item,
     }
 
-
+@cache_page(60)
 def index(request):
     # Формы
     if request.method == 'POST':
