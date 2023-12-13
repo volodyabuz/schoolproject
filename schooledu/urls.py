@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from .settings import MEDIA_URL, MEDIA_ROOT, DEBUG
+from kidsedu.views import view_404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,3 +29,5 @@ urlpatterns = [
 if DEBUG:
     urlpatterns = [path("__debug__/", include("debug_toolbar.urls")),] + urlpatterns
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+
+handler404 = view_404

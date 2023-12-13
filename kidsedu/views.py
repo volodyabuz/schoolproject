@@ -1,12 +1,10 @@
 from typing import Any, Dict
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 
 from .models import *
 from django.views.generic import ListView, CreateView
 from .forms import *
-from django.core.mail import send_mail, BadHeaderError
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
@@ -57,7 +55,7 @@ def index(request):
         form = AddPersonForm()
         form_fb = FeedBackForm()
 
-    context['title'] = 'Главная страница'
+    context['title'] = 'Главная | SchoolEdu'
     context['form'] = form
     context['form_fb'] = form_fb
     return render(request, 'kidsedu/index2.html', context=context)
@@ -73,7 +71,7 @@ class AllPosts(ListView):
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Все программы'
+        context['title'] = 'Все программы | SchoolEdu'
         context['social'] = social
         context['form'] = AllPosts.form
         return context
@@ -85,7 +83,7 @@ class Register(CreateView):
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Регистрация пользователя'
+        context['title'] = 'Регистрация | SchoolEdu'
         context['social'] = social
         context['form'] = Register.form_class
         return context
@@ -111,3 +109,7 @@ def send_email_func(used_form, subject_mail):
     msg.send()
 
     return redirect('home')
+
+def view_404(request, exception):
+    context['title'] = 'Страница не найдена | SchoolEdu'
+    return render(request, 'kidsedu/404.html')
