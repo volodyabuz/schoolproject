@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['volody9n.beget.tech', 'www.volody9n.beget.tech']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'captcha',
     "debug_toolbar",
     'kidsedu.apps.KidseduConfig',
+    'django_dump_load_utf8',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'volody9n_django',
+        # 'USER': 'volody9n_django',
+        # 'PASSWORD': config('DATABASES_PASSWORD'),
+        # 'HOST': 'localhost',   
+        # 'PORT': '3306',
     }
 }
 

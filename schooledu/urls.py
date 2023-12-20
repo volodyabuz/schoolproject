@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from .settings import MEDIA_URL, MEDIA_ROOT, DEBUG
+from .settings import MEDIA_URL, MEDIA_ROOT, DEBUG, STATIC_URL, STATIC_ROOT
 from kidsedu.views import view_404
+from django.views.static import serve as mediaserve
+# from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +31,12 @@ urlpatterns = [
 if DEBUG:
     urlpatterns = [path("__debug__/", include("debug_toolbar.urls")),] + urlpatterns
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
+# else:
+#     urlpatterns += [
+#         url(f'^{MEDIA_URL.lstrip("/")}(?P<path>.*)$',
+#             mediaserve, {'document_root': MEDIA_ROOT}),
+#         url(f'^{STATIC_URL.lstrip("/")}(?P<path>.*)$',
+#             mediaserve, {'document_root': STATIC_ROOT}),
+#     ]
 
 handler404 = view_404
